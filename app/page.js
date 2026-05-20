@@ -19,27 +19,10 @@ import {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const internshipRef = useRef();
   const contactRef = useRef();
 
-  const sendInternship = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_l5rwsbg",
-        "template_sx0a7ib",
-        internshipRef.current,
-        "gap0tKxtBmoMou3Fp"
-      )
-      .then(() => {
-        alert("Internship application submitted successfully!");
-        internshipRef.current.reset();
-      })
-      .catch(() => {
-        alert("Something went wrong. Please try again.");
-      });
-  };
+  const googleFormLink =
+    "https://docs.google.com/forms/d/e/1FAIpQLSdqMvIfA5fAh9Nvh6LQcT6RsJ4t92MZU_TUI25QfUGxLO0qvw/viewform?usp=dialog";
 
   const sendContact = (e) => {
     e.preventDefault();
@@ -85,7 +68,6 @@ export default function Home() {
               height={54}
               className="rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.55)]"
             />
-
             <h1 className="text-2xl font-black tracking-wider">NOVASTACK</h1>
           </a>
 
@@ -148,14 +130,16 @@ export default function Home() {
         <div className="mt-10 flex w-full max-w-xl flex-col gap-4">
           <a
             href="#contact"
-            className="rounded-full bg-white px-8 py-5 text-lg font-black text-black"
+            className="rounded-full bg-white px-8 py-5 text-lg font-black text-black transition hover:bg-cyan-200"
           >
             Start Automation →
           </a>
 
           <a
-            href="#internship"
-            className="rounded-full border border-cyan-400/50 bg-black/40 px-8 py-5 text-lg font-black"
+            href={googleFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-cyan-400/50 bg-black/40 px-8 py-5 text-lg font-black transition hover:border-cyan-300"
           >
             Apply For Internship →
           </a>
@@ -241,72 +225,28 @@ export default function Home() {
             projects.
           </p>
 
-          <form
-            ref={internshipRef}
-            onSubmit={sendInternship}
-            encType="multipart/form-data"
-            className="mt-8 grid gap-4"
-          >
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Full Name"
-              className="w-full rounded-xl bg-white/10 p-4 outline-none"
-            />
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 className="text-2xl font-bold text-cyan-200">
+              Application Includes:
+            </h3>
 
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email Address"
-              className="w-full rounded-xl bg-white/10 p-4 outline-none"
-            />
-
-            <input
-              type="tel"
-              name="phone"
-              required
-              placeholder="Phone Number"
-              className="w-full rounded-xl bg-white/10 p-4 outline-none"
-            />
-
-            <input
-              type="text"
-              name="college"
-              required
-              placeholder="College Name"
-              className="w-full rounded-xl bg-white/10 p-4 outline-none"
-            />
-
-            <textarea
-              name="skills"
-              required
-              placeholder="Your Skills: Python, AI, ML, React, etc."
-              className="h-28 w-full rounded-xl bg-white/10 p-4 outline-none"
-            />
-
-            <div className="rounded-xl bg-white/10 p-4">
-              <label className="mb-2 block text-sm text-gray-300">
-                Upload Resume PDF
-              </label>
-
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf"
-                required
-                className="w-full text-sm text-gray-300 file:mr-4 file:rounded-full file:border-0 file:bg-white file:px-4 file:py-2 file:font-bold file:text-black"
-              />
+            <div className="mt-5 grid gap-3 text-gray-300">
+              <p>✅ Full name, email, phone number</p>
+              <p>✅ College details</p>
+              <p>✅ Skills and experience</p>
+              <p>✅ Resume PDF upload</p>
+              <p>✅ Data saved in Google Form + Google Drive</p>
             </div>
+          </div>
 
-            <button
-              type="submit"
-              className="rounded-xl bg-white py-4 font-bold text-black transition hover:bg-cyan-200"
-            >
-              Submit Internship Application
-            </button>
-          </form>
+          <a
+            href={googleFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-block rounded-full bg-white px-8 py-5 text-lg font-black text-black transition hover:scale-[1.03] hover:bg-cyan-200"
+          >
+            Apply Now →
+          </a>
         </div>
       </section>
 
