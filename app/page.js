@@ -45,7 +45,6 @@ export default function Home() {
 
         <div className="glow-animation absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
         <div className="glow-animation absolute bottom-0 left-0 h-[450px] w-[450px] rounded-full bg-purple-600/20 blur-[120px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_35%)]" />
       </div>
 
       <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
@@ -58,7 +57,6 @@ export default function Home() {
               height={54}
               className="rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.55)]"
             />
-
             <h1 className="text-2xl font-black tracking-wider sm:text-3xl">
               NOVASTACK
             </h1>
@@ -75,7 +73,6 @@ export default function Home() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="rounded-2xl border border-white/15 bg-white/5 p-4 md:hidden"
-            aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -107,7 +104,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-10 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-6 py-3 text-sm font-bold text-cyan-200 shadow-[0_0_35px_rgba(34,211,238,0.25)]"
+          className="mb-10 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-6 py-3 text-sm font-bold text-cyan-200"
         >
           AI Agents • Automation • Internships
         </motion.div>
@@ -134,24 +131,24 @@ export default function Home() {
             href="#contact"
             className="flex items-center justify-center rounded-full bg-white px-8 py-5 text-lg font-black text-black transition hover:scale-[1.03] hover:bg-cyan-200"
           >
-            Start Automation <span className="ml-4 text-2xl">→</span>
+            Start Automation →
           </a>
 
           <a
             href="#internship"
-            className="flex items-center justify-center rounded-full border border-cyan-400/50 bg-black/40 px-8 py-5 text-lg font-black text-white transition hover:scale-[1.03] hover:border-purple-400"
+            className="flex items-center justify-center rounded-full border border-cyan-400/50 bg-black/40 px-8 py-5 text-lg font-black text-white transition hover:scale-[1.03]"
           >
-            Apply For Internship <span className="ml-4 text-2xl text-cyan-300">→</span>
+            Apply For Internship →
           </a>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="grid grid-cols-3 gap-0 rounded-3xl border border-cyan-400/30 bg-white/5 p-5 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-xl">
+        <div className="grid grid-cols-3 gap-0 rounded-3xl border border-cyan-400/30 bg-white/5 p-5 backdrop-blur-xl">
           {[
-            ["100+", "Students Trained", Users],
-            ["25+", "AI Projects Built", Rocket],
-            ["10+", "Automation Solutions", Bot],
+            ["100+", "Students", Users],
+            ["25+", "Projects", Rocket],
+            ["10+", "Automation", Bot],
           ].map(([number, title, Icon], index) => (
             <div
               key={title}
@@ -221,7 +218,6 @@ export default function Home() {
           <form
             action="https://formsubmit.co/hr.novastack@gmail.com"
             method="POST"
-            encType="multipart/form-data"
             className="mt-8 grid gap-4"
           >
             <input type="hidden" name="_subject" value="New Internship Application - NOVASTACK" />
@@ -239,10 +235,12 @@ export default function Home() {
               className="h-28 w-full rounded-xl bg-white/10 p-4 outline-none"
             />
 
-            <div className="rounded-xl bg-white/10 p-4">
-              <label className="mb-2 block text-sm text-gray-300">Upload Resume</label>
-              <input type="file" name="resume" accept=".pdf,.doc,.docx" required className="w-full text-sm text-gray-300" />
-            </div>
+            <input
+              type="url"
+              name="resume_link"
+              placeholder="Resume Google Drive Link"
+              className="w-full rounded-xl bg-white/10 p-4 outline-none"
+            />
 
             <button type="submit" className="rounded-xl bg-white py-4 font-bold text-black transition hover:bg-cyan-200">
               Submit Internship Application
@@ -294,27 +292,6 @@ export default function Home() {
             >
               <Icon size={48} className="mx-auto mb-5 text-purple-300" />
               <h3 className="text-xl font-bold">{title}</h3>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <h2 className="mb-12 text-center text-5xl font-black">Testimonials</h2>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            "NOVASTACK made AI easy for me.",
-            "Best beginner-friendly AI internship.",
-            "Their automation ideas are amazing.",
-          ].map((text, index) => (
-            <motion.div
-              whileHover={{ y: -8 }}
-              key={index}
-              className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
-            >
-              <p className="text-gray-300">“{text}”</p>
-              <h4 className="mt-6 font-bold">Student {index + 1}</h4>
             </motion.div>
           ))}
         </div>
